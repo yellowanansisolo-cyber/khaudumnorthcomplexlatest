@@ -1,0 +1,53 @@
+<%- include('partials/header') %>
+
+<main>
+    <section class="contact-page-section">
+        <div class="container">
+          <div class="footer_get_touch_inner">
+            <div class="colmun-70 get_form">
+              <div class="get_form_inner">
+                <div class="get_form_inner_text">
+                  <h3>Get In Touch</h3>
+                </div>
+                <form action="/contact-submit" method="POST">
+                  <div class="grid-50-50">
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="phone" placeholder="Phone (Optional)">
+                  </div>
+                  <div class="grid-full">
+                    <textarea name="message" placeholder="Your Message" cols="30" rows="10" required></textarea>
+                    <input type="submit" value="Submit">
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="colmun-30 get_say_form">
+              <h5>Say Hi!</h5>
+              <ul class="get_say_info_sec">
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:info@khaudumnorth.org">info@khaudumnorth.org</a>
+                </li>
+                <li>
+                  <i class="fas fa-phone"></i>
+                  <a href="tel:+264123456789">(+264) 123 456 789</a>
+                </li>
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <a href="#">Kavango East, Namibia</a>
+                </li>
+              </ul>
+              <ul class="get_say_social-icn">
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+</main>
+
+<%- include('partials/footer') %>

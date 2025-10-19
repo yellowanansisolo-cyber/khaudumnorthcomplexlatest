@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+
+<main class="downloads-page">
+    <!-- Page Header -->
+    <div class="projects-header" data-aos="fade-in">
+        <h1><%- siteContent.downloads.headerTitle %></h1>
+        <p class="lead"><%- siteContent.downloads.headerSubtitle %></p>
+    </div>
+
+    <div class="container py-5">
+
+        <!-- Annual Reports Section -->
+        <section id="reports" class="mb-5">
+            <h2 class="section-title" data-aos="fade-up">Annual Reports</h2>
+            <% if (siteContent.downloads.reports && siteContent.downloads.reports.length > 0) { %>
+                <ul class="download-list">
+                    <% siteContent.downloads.reports.forEach((doc, index) => { %>
+                        <li class="download-item" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                            <div class="icon"><i class="fas fa-file-alt"></i></div>
+                            <div class="content">
+                                <h4><%= doc.title %></h4>
+                                <p><%= doc.description %></p>
+                            </div>
+                            <a href="<%= doc.filePath %>" class="btn-download" download>Download</a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p data-aos="fade-up">No annual reports are available at this time.</p>
+            <% } %>
+        </section>
+
+        <!-- Meeting Minutes Section -->
+        <section id="minutes" class="mb-5">
+            <h2 class="section-title" data-aos="fade-up">Meeting Minutes</h2>
+            <% if (siteContent.downloads.minutes && siteContent.downloads.minutes.length > 0) { %>
+                <ul class="download-list">
+                    <% siteContent.downloads.minutes.forEach((doc, index) => { %>
+                        <li class="download-item" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                            <div class="icon"><i class="fas fa-file-word"></i></div>
+                            <div class="content">
+                                <h4><%= doc.title %></h4>
+                                <p><%= doc.description %></p>
+                            </div>
+                            <a href="<%= doc.filePath %>" class="btn-download" download>Download</a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p data-aos="fade-up">No meeting minutes are available at this time.</p>
+            <% } %>
+        </section>
+
+        <!-- Official Documents Section -->
+        <section id="documents">
+            <h2 class="section-title" data-aos="fade-up">Official Documents</h2>
+            <% if (siteContent.downloads.documents && siteContent.downloads.documents.length > 0) { %>
+                <ul class="download-list">
+                    <% siteContent.downloads.documents.forEach((doc, index) => { %>
+                        <li class="download-item" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                            <div class="icon"><i class="fas fa-file-pdf"></i></div>
+                            <div class="content">
+                                <h4><%= doc.title %></h4>
+                                <p><%= doc.description %></p>
+                            </div>
+                            <a href="<%= doc.filePath %>" class="btn-download" download>Download</a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p data-aos="fade-up">No official documents are available at this time.</p>
+            <% } %>
+        </section>
+
+    </div>
+</main>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<main>
+    <div class="projects-header" data-aos="fade-in">
+        <h1><%- siteContent.projects.headerTitle %></h1>
+        <p class="lead"><%- siteContent.projects.headerSubtitle %></p>
+    </div>
+
+    <div class="container">
+        <div class="projects-grid">
+            <!-- *** CORRECTED: Dynamic loop for project cards *** -->
+            <% siteContent.projects.projectCards.forEach((card, index) => { %>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                    <img src="<%= card.image %>" alt="<%= card.title %>" class="project-card-image">
+                    <div class="project-card-content">
+                        <span class="project-card-tag"><%= card.tag %></span>
+                        <h3 class="project-card-title"><%= card.title %></h3>
+                        <p class="project-card-description"><%= card.description %></p>
+                        <hr>
+                        <div class="social-interaction-bar">
+                            <div class="social-item like-btn"><i class="fas fa-heart"></i> <span class="like-count">75</span></div>
+                            <div class="social-item"><i class="fas fa-comment"></i> <span>15</span></div>
+                            <div class="social-item share-group">
+                                <i class="fas fa-share-alt"></i>
+                                <div class="share-options">
+                                    <a href="#" class="share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="share-btn" data-platform="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

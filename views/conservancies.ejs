@@ -1,0 +1,146 @@
+<%- include('partials/header') %>
+
+<main>
+    <!-- Page Header -->
+    <div class="conservancies-header" data-aos="fade-in">
+        <h1>Our Conservancies</h1>
+    </div>
+
+    <!-- George Mukoya Conservancy Section -->
+    <section id="george-mukoya" class="conservancy-section">
+        <div class="container">
+            <h2 class="conservancy-title" data-aos="fade-up"><%- siteContent.george_mukoya.title %></h2>
+            <p class="conservancy-description" data-aos="fade-up" data-aos-delay="100"><%- siteContent.george_mukoya.description %></p>
+
+            <div class="row gy-5">
+                <!-- Management Team -->
+                <div class="col-12" data-aos="fade-up">
+                    <h3 class="conservancy-subtitle"><%- siteContent.george_mukoya.teamTitle %></h3>
+                    <div class="team-grid">
+                        <% siteContent.george_mukoya.teamMembers.forEach((member, index) => { %>
+                            <div class="card team-card">
+                                <div class="circle-container">
+                                   <img src="<%= member.image %>" alt="Team Member <%= member.name %>">
+                                </div>
+                                <h3><%= member.name %></h3>
+                                <h4><%= member.title %></h4>
+                                <p><%= member.bio %></p>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+
+                <!-- Projects & Contact -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h3 class="conservancy-subtitle"><%- siteContent.george_mukoya.projectsTitle %></h3>
+                    <ul class="projects-list">
+                        <% siteContent.george_mukoya.projects.forEach(project => { %>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong><%= project.title %>:</strong> <%= project.description %>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                    
+                    <h3 class="conservancy-subtitle mt-5"><%- siteContent.george_mukoya.contactTitle %></h3>
+                    <div class="contact-info-block">
+                        <ul>
+                            <li><i class="fas fa-user"></i> <span><%- siteContent.george_mukoya.contactPerson %></span></li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:<%- siteContent.george_mukoya.contactPhone %>"><%- siteContent.george_mukoya.contactPhone %></a></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:<%- siteContent.george_mukoya.contactEmail %>"><%- siteContent.george_mukoya.contactEmail %></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Dedicated Gallery -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="conservancy-subtitle"><%- siteContent.george_mukoya.galleryTitle %></h3>
+                    <div class="dedicated-gallery-grid">
+                        <% siteContent.george_mukoya.galleryImages.forEach(image => { %>
+                            <div class="gallery-item">
+                                <a href="<%= image.url %>" class="modal-link">
+                                    <img src="<%= image.url %>" alt="<%= image.alt %>">
+                                </a>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Muduva Nyangana Conservancy Section -->
+    <section id="muduva-nyangana" class="conservancy-section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="conservancy-title" data-aos="fade-up"><%- siteContent.muduva_nyangana.title %></h2>
+            <p class="conservancy-description" data-aos="fade-up" data-aos-delay="100"><%- siteContent.muduva_nyangana.description %></p>
+
+            <div class="row gy-5">
+                 <!-- Management Team -->
+                <div class="col-12" data-aos="fade-up">
+                    <h3 class="conservancy-subtitle"><%- siteContent.muduva_nyangana.teamTitle %></h3>
+                    <div class="team-grid">
+                        <% siteContent.muduva_nyangana.teamMembers.forEach((member, index) => { %>
+                            <div class="card team-card">
+                                <div class="circle-container">
+                                   <img src="<%= member.image %>" alt="Team Member <%= member.name %>">
+                                </div>
+                                <h3><%= member.name %></h3>
+                                <h4><%= member.title %></h4>
+                                <p><%= member.bio %></p>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+
+                <!-- Projects & Contact -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h3 class="conservancy-subtitle"><%- siteContent.muduva_nyangana.projectsTitle %></h3>
+                     <ul class="projects-list">
+                        <% siteContent.muduva_nyangana.projects.forEach(project => { %>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong><%= project.title %>:</strong> <%= project.description %>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                    
+                    <h3 class="conservancy-subtitle mt-5"><%- siteContent.muduva_nyangana.contactTitle %></h3>
+                    <div class="contact-info-block" style="background-color: #fff;">
+                        <ul>
+                            <li><i class="fas fa-user"></i> <span><%- siteContent.muduva_nyangana.contactPerson %></span></li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:<%- siteContent.muduva_nyangana.contactPhone %>"><%- siteContent.muduva_nyangana.contactPhone %></a></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:<%- siteContent.muduva_nyangana.contactEmail %>"><%- siteContent.muduva_nyangana.contactEmail %></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Dedicated Gallery -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="conservancy-subtitle"><%- siteContent.muduva_nyangana.galleryTitle %></h3>
+                    <div class="dedicated-gallery-grid">
+                         <% siteContent.muduva_nyangana.galleryImages.forEach(image => { %>
+                            <div class="gallery-item">
+                                 <a href="<%= image.url %>" class="modal-link">
+                                    <img src="<%= image.url %>" alt="<%= image.alt %>">
+                                </a>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+</main>
+
+<%- include('partials/footer') %>

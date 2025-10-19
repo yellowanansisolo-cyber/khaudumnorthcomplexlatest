@@ -1,0 +1,95 @@
+<%- include('partials/header') %>
+
+<main class="natural-resources-page">
+    <div class="projects-header" data-aos="fade-in">
+        <h1><%- siteContent.natural_resources.headerTitle %></h1>
+        <p class="lead"><%- siteContent.natural_resources.headerSubtitle %></p>
+    </div>
+
+    <div class="container">
+        <section class="intro-section">
+            <div class="intro-text" data-aos="fade-right">
+                <p><%- siteContent.natural_resources.introParagraph %></p>
+            </div>
+            <div class="intro-image" data-aos="fade-left">
+                <img src="https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sustainable community initiatives">
+            </div>
+        </section>
+
+        <!-- Timber & Forest Products -->
+        <section class="products-section">
+            <h2 class="section-subtitle" data-aos="fade-up">Timber & Forest Products</h2>
+            <div class="products-grid">
+                <% siteContent.natural_resources.products.filter(p => p.category === 'Timber & Forest Products').forEach((product, index) => { %>
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                        <img src="<%= product.image %>" alt="<%= product.name %>" class="product-card-image">
+                        <div class="product-card-content">
+                            <div class="product-card-category"><%= product.category %></div>
+                            <h3 class="product-card-name"><%= product.name %></h3>
+                            <p class="product-card-description"><%= product.description %></p>
+                            <a href="#inquiry-form" class="btn-inquire">Inquire Now</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+
+        <!-- Community Crafts & Goods -->
+        <section class="products-section">
+            <h2 class="section-subtitle" data-aos="fade-up">Community Crafts & Goods</h2>
+            <div class="products-grid">
+                <% siteContent.natural_resources.products.filter(p => p.category === 'Community Crafts & Goods').forEach((product, index) => { %>
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                        <img src="<%= product.image %>" alt="<%= product.name %>" class="product-card-image">
+                        <div class="product-card-content">
+                            <div class="product-card-category"><%= product.category %></div>
+                            <h3 class="product-card-name"><%= product.name %></h3>
+                            <p class="product-card-description"><%= product.description %></p>
+                            <a href="#inquiry-form" class="btn-inquire">Inquire Now</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </div>
+
+    <section id="inquiry-form" class="form-section">
+        <div class="form-text-block" data-aos="fade-right">
+            <h2 class="section-subtitle">Partnership & Commercial Inquiries</h2>
+            <p>Interested in sourcing our products or partnering with our conservancies? Please fill out the form, and a member of our management team will get in touch with you shortly to discuss opportunities.</p>
+        </div>
+        <div class="inquiry-form-container" data-aos="fade-left">
+            <form action="/natural-resources-submit" method="POST" class="inquiry-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="product_interest">Product of Interest</label>
+                    <select id="product_interest" name="product_interest">
+                        <option value="General Inquiry">General Inquiry</option>
+                        <% siteContent.natural_resources.products.forEach(product => { %>
+                            <option value="<%= product.name %>"><%= product.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<%- include('partials/footer') %>

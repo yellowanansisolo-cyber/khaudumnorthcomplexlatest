@@ -1,0 +1,135 @@
+<%- include('partials/header') %>
+
+<main class="youth-forum-page">
+    <!-- Page Header -->
+    <div class="projects-header" data-aos="fade-in">
+        <h1><%- siteContent.youth_forum.headerTitle %></h1>
+        <p class="lead"><%- siteContent.youth_forum.headerSubtitle %></p>
+    </div>
+
+    <div class="container py-5">
+        <!-- Introduction Section -->
+        <section class="hunting-intro">
+            <h2 class="section-title" data-aos="fade-up"><%- siteContent.youth_forum.introTitle %></h2>
+            <p data-aos="fade-up" data-aos-delay="100"><%- siteContent.youth_forum.introParagraph %></p>
+        </section>
+
+        <!-- Tab Navigation -->
+        <ul class="nav nav-pills justify-content-center mb-4" id="youthForumTab" role="tablist" data-aos="fade-up" data-aos-delay="200">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="projects-tab" data-bs-toggle="pill" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="true">Youth Projects</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="training-tab" data-bs-toggle="pill" data-bs-target="#training" type="button" role="tab" aria-controls="training" aria-selected="false">Training & Skills</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="stories-tab" data-bs-toggle="pill" data-bs-target="#stories" type="button" role="tab" aria-controls="stories" aria-selected="false">Success Stories</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="events-tab" data-bs-toggle="pill" data-bs-target="#events" type="button" role="tab" aria-controls="events" aria-selected="false">Events</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="share-tab" data-bs-toggle="pill" data-bs-target="#share" type="button" role="tab" aria-controls="share" aria-selected="false">Share Your Idea</button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="youthForumTabContent" data-aos="fade-up" data-aos-delay="300">
+            
+            <!-- Youth Projects Pane -->
+            <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+                <h3>Current Youth-Led Projects</h3>
+                <hr>
+                <% siteContent.youth_forum.projects.forEach(project => { %>
+                    <div class="youth-project-card">
+                        <img src="<%= project.image %>" alt="<%= project.title %>">
+                        <div class="youth-project-card-content">
+                            <h4><%= project.title %></h4>
+                            <div class="leader"><%= project.leader %></div>
+                            <p><%= project.description %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Training & Skills Pane -->
+            <div class="tab-pane fade" id="training" role="tabpanel" aria-labelledby="training-tab">
+                <h3>Training Opportunities & Skills Programs</h3>
+                <hr>
+                <% siteContent.youth_forum.opportunities.forEach(op => { %>
+                    <div class="opportunity-item">
+                        <h4><%= op.title %></h4>
+                        <div class="provider"><%= op.provider %></div>
+                        <p><%= op.description %></p>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Success Stories Pane -->
+            <div class="tab-pane fade" id="stories" role="tabpanel" aria-labelledby="stories-tab">
+                 <h3>Youth Success Stories</h3>
+                 <hr>
+                 <div class="row">
+                    <% siteContent.youth_forum.successStories.forEach(story => { %>
+                        <div class="col-md-6 mb-4">
+                            <div class="success-story-card">
+                                <img src="<%= story.image %>" alt="<%= story.name %>">
+                                <h4><%= story.name %></h4>
+                                <div class="achievement"><%= story.achievement %></div>
+                                <p class="mt-2">"<%= story.story %>"</p>
+                            </div>
+                        </div>
+                    <% }) %>
+                 </div>
+            </div>
+
+            <!-- Events Pane -->
+            <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+                <h3>Upcoming Events</h3>
+                <hr>
+                <% siteContent.youth_forum.events.forEach(event => { %>
+                    <div class="event-item">
+                        <div class="date"><%= new Date(event.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></div>
+                        <h4><%= event.title %></h4>
+                        <p><%= event.description %></p>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Share Your Idea Pane -->
+            <div class="tab-pane fade" id="share" role="tabpanel" aria-labelledby="share-tab">
+                <div class="share-idea-form">
+                    <div class="text-center mb-4">
+                        <h3><%- siteContent.youth_forum.shareIdeaTitle %></h3>
+                        <p><%- siteContent.youth_forum.shareIdeaParagraph %></p>
+                    </div>
+                    <form action="/youth-idea-submit" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label for="youth_name">Full Name</label>
+                                <input type="text" id="youth_name" name="fullName" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="youth_email">Email Address</label>
+                                <input type="email" id="youth_email" name="email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="idea_title">Title of your Idea / Achievement</label>
+                            <input type="text" id="idea_title" name="ideaTitle" class="form-control" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="idea_description">Describe your Idea / Achievement</label>
+                            <textarea id="idea_description" name="description" class="form-control" rows="6" required></textarea>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn-submit-inquiry">Submit for Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

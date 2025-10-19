@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+
+<main>
+    <div class="container news-page-container">
+        <div class="news-header" data-aos="fade-up">
+            <h1><%- siteContent.news.headerTitle %></h1>
+            <p><%- siteContent.news.headerSubtitle %></p>
+        </div>
+
+        <div class="well news-controls" data-aos="fade-up">
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm"><i class="fas fa-bars me-1"></i>List</a> 
+                <a href="#" id="grid" class="btn btn-default btn-sm active"><i class="fas fa-th-large me-1"></i>Grid</a>
+            </div>
+        </div>
+
+        <div id="products" class="row">
+            <% if (!siteContent.news.articles || siteContent.news.articles.length === 0) { %>
+                <p class="text-center">No news articles available at this time. Please check back later.</p>
+            <% } else { %>
+                <% siteContent.news.articles.forEach((article, index) => { %>
+                    <div class="news-item col-12 col-md-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                        <div class="thumbnail">
+                            <img class="group list-group-image" src="<%= article.image %>" alt="<%= article.title %>" />
+                            <div class="tag"><%= article.tag %></div>
+                            <div class="caption">
+                                <h4 class="news-title"><%= article.title %></h4>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="news-date mb-0"><%= new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+                                    <!-- Link to a future single article page could go here -->
+                                    <a class="btn btn-details" href="#">Read More</a>
+                                </div>
+                                <hr>
+                                <div class="social-interaction-bar">
+                                    <div class="social-item like-btn"><i class="fas fa-heart"></i> <span class="like-count">18</span></div>
+                                    <div class="social-item"><i class="fas fa-comment"></i> <span>3</span></div>
+                                    <div class="social-item share-group">
+                                        <i class="fas fa-share-alt"></i>
+                                        <div class="share-options">
+                                            <a href="#" class="share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="#" class="share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                                            <a href="#" class="share-btn" data-platform="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

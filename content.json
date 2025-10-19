@@ -1,0 +1,364 @@
+{
+  "home": {
+    "heroSubtitle": "Conservation • Community • Growth",
+    "heroTitle": "KHAUDUM NORTH<br>COMPLEX",
+    "heroImage": "/uploads/new_heroImage-1760869439301-342836601.jpg",
+    "aboutSubtitle": "ABOUT KHAUDUM NORTH COMPLEX",
+    "aboutTitle": "Welcome to<br>our Community",
+    "aboutParagraph": "It is difficult to capture what we are about in just a few words. Our secret ingredient is that we are small enough to provide individual attention, yet have the operational muscle and organisational fines to move mountains for conservation and for our people.",
+    "aboutImages": [
+      {
+        "image": "/uploads/aboutImages_image_0-1760869673628-420283105.jpg",
+        "alt": "Conservancy community members smiling"
+      },
+      {
+        "image": "/uploads/aboutImages_image_1-1760714338861-328847569.jpg",
+        "alt": "Elephant walking in Khaudum"
+      },
+      {
+        "image": "/uploads/aboutImages_image_2-1760714338875-371071933.jpg",
+        "alt": "Namibian landscape with a road"
+      }
+    ],
+    "servicesSubtitle": "OUR SERVICES",
+    "servicesTitle": "What We Offer<strong>Our Community & Partners</strong>",
+    "servicesParagraph": "We provide a range of community-driven services",
+    "testimonials": [
+      {
+        "name": "John K. // Ranger",
+        "title": "George Mukoya Conservancy",
+        "quote": "Protecting our wildlife is more than a job; it's a promise to our children. The support we receive makes a tangible difference on the ground every single day.",
+        "image": "https://images.pexels.com/photos/8999941/pexels-photo-8999941.jpeg?auto=compress&cs=tinysrgb&w=200"
+      }
+    ],
+    "initiativesTitle": "Our Key Initiatives",
+    "initiatives": [
+      {
+        "image": "/uploads/initiatives_image_0-1760580787617-814307481.jpg",
+        "title": "Conservation & Wildlife Protection",
+        "description": "Active monitoring, anti-poaching patrols, and habitat preservation efforts."
+      },
+      {
+        "image": "/uploads/initiatives_image_1-1760580787620-571987356.jpg",
+        "title": "New Initiative",
+        "description": "Enter description here."
+      }
+    ],
+    "partnersTitle": "What Our Partners Say",
+    "partners": [
+      {
+        "image": "/uploads/partners_image_0-1760580728409-404449177.jpg",
+        "name": "Dr. Alan Grant",
+        "organization": "Global Wildlife Fund"
+      },
+      {
+        "image": "/uploads/partners_image_1-1760580728412-967488397.jpg",
+        "name": "New Partner",
+        "organization": "Organization Name"
+      }
+    ],
+    "ctaTitle": "Get In Touch",
+    "ctaParagraph": "Have a question or want to partner with us? We would love to hear from you."
+  },
+  "about": {
+    "headerTitle": "Our Story & Commitment",
+    "section1Title": "About The Complex",
+    "section1Para1": "The Khaudum North Complex is a collaborative conservation initiative encompassing the George Mukoya Conservancy and the Muduva Nyangana Conservancy. Our purpose is to protect our unique ecosystems while fostering sustainable economic growth and empowerment for our local communities.",
+    "section1Para2": "We believe that conservation and community development must go hand-in-hand. By establishing a professional, transparent, and informative platform, we aim to connect our conservancies with the world, creating opportunities for partnership, investment, and shared success.",
+    "section1Image": "/uploads/new_section1Image-1760617082449-401367240.jpg",
+    "section2Title": "Mission & Vision",
+    "section2Mission": "<strong>Our Mission:</strong> To sustainably manage and conserve our natural resources for the benefit of wildlife and the community, ensuring a harmonious coexistence and a prosperous future for generations to come.",
+    "section2Vision": "<strong>Our Vision:</strong> To be a leading example of community-based conservation in Namibia, where thriving ecosystems support empowered, self-reliant communities who are the primary guardians and beneficiaries of their natural heritage.",
+    "section2Image": "/uploads/new_section2Image-1760579887947-123867400.png",
+    "teamTitle": "Our Team",
+    "teamMembers": [
+      {
+        "name": "John Kavari",
+        "title": "Technical Manager",
+        "bio": "Leads the implementation of conservation strategies and field operations across the complex.",
+        "image": "/uploads/teamMembers_image_0-1760617082452-343775303.jpg"
+      }
+    ]
+  },
+  "george_mukoya": {
+    "title": "George Mukoya Conservancy",
+    "description": "Established in [Year], the George Mukoya Conservancy is a vibrant community dedicated to the protection of its rich natural heritage. Spanning [Number] hectares, it is home to a diverse array of wildlife and plays a crucial role in the ecological corridor of the Khaudum North Complex.",
+    "teamTitle": "Management Team",
+    "projectsTitle": "Current Projects",
+    "galleryTitle": "A Glimpse into George Mukoya",
+    "contactTitle": "Contact Information",
+    "contactPerson": "Mr. John Doe, Conservancy Manager",
+    "contactPhone": "(+264) 123-456-789",
+    "contactEmail": "info.gm@khaudumnorth.org",
+    "teamMembers": [
+      {
+        "image": "/uploads/teamMembers_image_0-1760617107336-959993457.jpg",
+        "name": "John Doe",
+        "title": "Conservancy Manager",
+        "bio": "Oversees all conservancy operations and community relations."
+      }
+    ],
+    "projects": [
+      {
+        "title": "Human-Elephant Conflict Mitigation",
+        "description": "Implementing chili-brick fences and early-warning systems to protect crops and ensure safe passage for elephants."
+      }
+    ],
+    "galleryImages": [
+      {
+        "url": "/uploads/galleryImages_url_0-1760617107338-506245157.jpg",
+        "alt": "Elephant in George Mukoya"
+      },
+      {
+        "url": "/uploads/galleryImages_url_1-1760616582609-642033115.png",
+        "alt": "Community of George Mukoya"
+      }
+    ]
+  },
+  "muduva_nyangana": {
+    "title": "Muduva Nyangana Conservancy",
+    "description": "The Muduva Nyangana Conservancy, formed in [Year], is a testament to the community's commitment to sustainable living. It focuses on integrating traditional knowledge with modern conservation techniques to manage its precious resources, including vital riverine habitats and woodland areas.",
+    "teamTitle": "Management Team",
+    "projectsTitle": "Current Projects",
+    "galleryTitle": "A Glimpse into Muduva Nyangana",
+    "contactTitle": "Contact Information",
+    "contactPerson": "Ms. Jane Smith, Conservancy Coordinator",
+    "contactPhone": "(+264) 987-654-321",
+    "contactEmail": "info.mn@khaudumnorth.org",
+    "teamMembers": [
+      {
+        "image": "/uploads/teamMembers_image_0-1760617138652-966393174.jpg",
+        "name": "Jane Smith",
+        "title": "Conservancy Coordinator",
+        "bio": "Coordinates community projects and conservation initiatives."
+      }
+    ],
+    "projects": [
+      {
+        "title": "Sustainable Devil's Claw Harvesting",
+        "description": "A community-driven project to sustainably harvest and market Devil's Claw, providing income while ensuring the plant's long-term survival."
+      }
+    ],
+    "galleryImages": [
+      {
+        "url": "/uploads/galleryImages_url_0-1760617138659-799472896.jpg",
+        "alt": "Riverine habitat in Muduva Nyangana"
+      },
+      {
+        "url": "/uploads/galleryImages_url_1-1760616619973-949115075.png",
+        "alt": "Community meeting in Muduva Nyangana"
+      }
+    ]
+  },
+  "gallery": {
+    "headerTitle": "Our Gallery",
+    "headerSubtitle": "Explore the stunning landscapes, diverse wildlife, and vibrant community life of the Khaudum North Complex.",
+    "images": [
+      {
+        "url": "/uploads/images_url_0-1760579769693-75820235.jpg",
+        "alt": "erw"
+      },
+      {
+        "url": "/uploads/images_url_1-1760617290850-959532874.jpg",
+        "alt": "New gallery image"
+      }
+    ]
+  },
+  "news": {
+    "headerTitle": "News & Updates",
+    "headerSubtitle": "The latest articles, events, and announcements from the Khaudum North Complex.",
+    "articles": [
+      {
+        "id": 1760617044293,
+        "title": "test",
+        "date": "2025-10-16",
+        "tag": "test",
+        "content": "test",
+        "image": "/uploads/image-1760617044286-486066102.jpg"
+      },
+      {
+        "id": 1678886400000,
+        "title": "Community Meeting on New Water Point Development",
+        "date": "2025-10-15",
+        "tag": "Community",
+        "content": "A successful meeting was held with community leaders to discuss the placement and management of three new solar-powered water points. This project aims to reduce human-wildlife conflict and provide reliable water access.",
+        "image": "/uploads/image-1760617027853-419605837.jpg"
+      }
+    ]
+  },
+  "projects": {
+    "headerTitle": "Projects & Programs",
+    "headerSubtitle": "A consolidated view of all conservation and development projects across the Khaudum North Complex.",
+    "projectCards": [
+      {
+        "image": "/uploads/projectCards_image_0-1760579732985-107982000.jpg",
+        "tag": "Conservation",
+        "title": "Human-Wildlife Conflict Mitigation",
+        "description": "Implementing innovative strategies to reduce conflict between local farmers and wildlife, ensuring the safety of both people and animals."
+      },
+      {
+        "image": "/uploads/projectCards_image_1-1760617163940-921349980.jpg",
+        "tag": "Community",
+        "title": "Youth Skills & Empowerment Program",
+        "description": "Providing vocational training in hospitality, craft-making, and conservation guiding to create employment opportunities."
+      },
+      {
+        "image": "/uploads/projectCards_image_2-1760617163947-952253083.jpg",
+        "tag": "Economic Growth",
+        "title": "Sustainable Forestry Initiative",
+        "description": "A joint effort to manage our timber and forest product resources sustainably, providing economic benefits while preserving the ecosystem."
+      },
+      {
+        "image": "/uploads/projectCards_image_3-1760579747161-198013794.jpg",
+        "tag": "Category",
+        "title": "New Project Title",
+        "description": "Enter project description here."
+      }
+    ]
+  },
+  "natural_resources": {
+    "headerTitle": "Natural Resources & Community Crafts",
+    "headerSubtitle": "Explore the sustainable products our conservancies offer, from responsibly harvested timber to unique, handcrafted goods. Your partnership directly supports our community and conservation efforts.",
+    "introParagraph": "We are committed to the sustainable utilization of our natural resources, ensuring that economic development goes hand-in-hand with environmental preservation. Below are the key products available for partnership and purchase. For commercial inquiries, please use the form provided.",
+    "products": [
+      {
+        "image": "/uploads/products_image_0-1760617197145-753929835.jpg",
+        "category": "Timber & Forest Products",
+        "name": "Sustainably Harvested Hardwood",
+        "description": "High-quality timber sourced from designated areas, managed under strict sustainable forestry guidelines to ensure minimal environmental impact and long-term ecosystem health."
+      },
+      {
+        "image": "https://images.pexels.com/photos/2659387/pexels-photo-2659387.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "category": "Community Crafts & Goods",
+        "name": "Handwoven Baskets",
+        "description": "Intricately crafted baskets made from local grasses and reeds by talented community artisans. Each piece tells a story and represents a unique cultural heritage."
+      },
+      {
+        "image": "https://images.pexels.com/photos/6621472/pexels-photo-6621472.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "category": "Community Crafts & Goods",
+        "name": "Artisanal Honey",
+        "description": "Pure, raw honey harvested from the wildflowers of the Khaudum North Complex. Our beekeeping initiatives support local livelihoods and promote pollination."
+      },
+      {
+        "image": "https://images.pexels.com/photos/1937743/pexels-photo-1937743.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "category": "Community Crafts & Goods",
+        "name": "Hand-carved Wooden Crafts",
+        "description": "Unique sculptures and utensils carved by local craftsmen from sustainably sourced wood. These items showcase traditional skills and provide a vital source of income."
+      }
+    ]
+  },
+  "hunting": {
+    "headerTitle": "Sustainable Wildlife Management",
+    "headerSubtitle": "Engage in responsible, conservation-led trophy hunting that directly contributes to the well-being of our communities and the health of our ecosystem.",
+    "introTitle": "A Commitment to Conservation",
+    "introParagraph": "Trophy hunting, when managed ethically and sustainably, is a critical conservation tool within the Khaudum North Complex. It provides significant revenue that is directly reinvested into our anti-poaching patrols, habitat management, and community development projects. Our programs are strictly regulated to ensure that only specific, older-class animals are targeted, promoting healthy population dynamics and genetic diversity. By participating, you become a partner in a successful conservation model that makes wildlife a valuable asset for the local people who live alongside it.",
+    "inquiryTitle": "Commercial Inquiries & Reservations",
+    "inquirySubtitle": "Please select the category of interest and complete the form. Our management team will respond to discuss availability, quotas, and planning for your expedition.",
+    "elephantTitle": "Elephant Trophy Inquiries",
+    "plainsGameTitle": "Plains Game Antelope Inquiries",
+    "ethicsTitle": "Our Ethical Commitment",
+    "ethicsParagraph": "All hunting activities are conducted in strict accordance with Namibian law and international conservation principles. We are committed to fair-chase hunting, animal welfare, and ensuring that the maximum possible benefit flows back to the community. Your participation supports a model where conservation pays, ensuring the long-term survival of our precious wildlife."
+  },
+  "youth_forum": {
+    "headerTitle": "KNC Youth Forum",
+    "headerSubtitle": "Empowering the next generation of conservation leaders and community entrepreneurs.",
+    "introTitle": "The Future is in Our Hands",
+    "introParagraph": "The Youth Forum is a dedicated space for the young people of the Khaudum North Complex to connect, learn, and grow. We believe that empowering our youth is the single most important investment in the long-term success of our conservation and community goals. This platform provides access to resources, showcases achievements, and offers a direct line to contribute to the future of our conservancies.",
+    "shareIdeaTitle": "Share Your Idea or Achievement",
+    "shareIdeaParagraph": "Have a project idea? A success story to share? We want to hear from you! Submissions will be reviewed by our management team and may be featured on our bulletin board.",
+    "projects": [
+      {
+        "image": "/uploads/projects_image_0-1760617215729-502906763.jpg",
+        "title": "Community Recycling Drive",
+        "leader": "Led by Maria N.",
+        "description": "A youth-led initiative to collect and sort recyclable materials within the community, promoting a cleaner environment and generating funds for youth activities."
+      }
+    ],
+    "opportunities": [
+      {
+        "title": "Basic Hospitality & Guiding Course",
+        "provider": "Offered by KNC & Partners",
+        "description": "A 3-month vocational training program for young adults interested in careers in tourism and conservation. Includes practical field training."
+      },
+      {
+        "title": "Small Business Management Workshop",
+        "provider": "Hosted by the Community Development Fund",
+        "description": "A 2-day workshop covering the fundamentals of starting and running a small enterprise, from financial literacy to marketing."
+      }
+    ],
+    "successStories": [
+      {
+        "image": "https://images.pexels.com/photos/8999941/pexels-photo-8999941.jpeg?auto=compress&cs=tinysrgb&w=200",
+        "name": "Joseph K.",
+        "achievement": "Head Ranger, Muduva Nyangana",
+        "story": "After completing the KNC ranger training program in 2021, Joseph quickly demonstrated exceptional leadership and tracking skills. He now leads anti-poaching patrols and serves as a mentor to new recruits, protecting the wildlife he grew up with."
+      }
+    ],
+    "events": [
+      {
+        "date": "2025-11-15",
+        "title": "Annual Youth Conservation Summit",
+        "description": "A full-day event bringing together youth from both conservancies to discuss challenges, share ideas, and plan projects for the upcoming year."
+      }
+    ]
+  },
+  "jobs": {
+    "headerTitle": "Jobs & Opportunities",
+    "headerSubtitle": "Join our dedicated team and contribute to a future where communities and wildlife thrive together. Explore current vacancies and tender opportunities within the Khaudum North Complex.",
+    "vacanciesTitle": "Current Vacancies",
+    "tendersTitle": "Tender Opportunities",
+    "vacancies": [
+      {
+        "title": "Conservancy Field Officer",
+        "location": "George Mukoya Conservancy",
+        "type": "Full-time",
+        "summary": "Seeking a dedicated Field Officer to assist with daily conservation monitoring, community outreach, and field data collection. A strong passion for wildlife and community development is required.",
+        "description": "<strong>Key Responsibilities:</strong><br><ul><li>Conduct daily wildlife and habitat monitoring patrols.</li><li>Assist in human-wildlife conflict mitigation efforts.</li><li>Engage with community members on conservation initiatives.</li><li>Collect and record field data accurately.</li></ul><strong>Requirements:</strong><br><ul><li>Diploma in Nature Conservation or related field.</li><li>Minimum 2 years of experience in a similar role.</li><li>Valid driver's license.</li><li>Fluent in English and at least one local language.</li></ul>"
+      },
+      {
+        "title": "Administrative Assistant",
+        "location": "Muduva Nyangana Conservancy",
+        "type": "Part-time",
+        "summary": "Part-time administrative role to support the management team. Good organizational skills, computer literacy (MS Office), and communication skills are essential.",
+        "description": "<strong>Key Responsibilities:</strong><br><ul><li>Provide administrative support to the conservancy manager.</li><li>Manage office correspondence and filing systems.</li><li>Assist with financial record-keeping and reporting.</li><li>Organize community meetings and workshops.</li></ul><strong>Requirements:</strong><br><ul><li>Grade 12 certificate.</li><li>Proficiency in Microsoft Office Suite (Word, Excel, Outlook).</li><li>Excellent organizational and time-management skills.</li></ul>"
+      }
+    ],
+    "tenders": [
+      {
+        "title": "Supply and Installation of Solar-Powered Water Pumps",
+        "reference": "KNC-T2025-001",
+        "closingDate": "2025-11-30",
+        "description": "Invitation for bids for the supply, delivery, and installation of three (3) solar-powered submersible water pump systems at designated water points within the complex. Tender documents are available upon request."
+      }
+    ]
+  },
+  "downloads": {
+    "headerTitle": "Download Center",
+    "headerSubtitle": "Access official reports, meeting minutes, and other key documents related to the Khaudum North Complex.",
+    "reports": [
+      {
+        "title": "2024 Annual Conservation Report",
+        "description": "A comprehensive overview of our conservation activities, wildlife monitoring data, and project outcomes for the year 2024.",
+        "filePath": "/downloads/placeholder.pdf"
+      }
+    ],
+    "minutes": [
+      {
+        "title": "Community General Meeting Minutes - Q3 2025",
+        "description": "Official minutes from the quarterly general meeting held with community members in September 2025.",
+        "filePath": "/downloads/placeholder.pdf"
+      }
+    ],
+    "documents": [
+      {
+        "title": "KNC Management & Governance Plan",
+        "description": "The official framework outlining the governance, operational strategies, and long-term vision for the Khaudum North Complex.",
+        "filePath": "/downloads/placeholder.pdf"
+      }
+    ]
+  },
+  "contact": {
+    "formTitle": "Get In Touch",
+    "sayHiTitle": "Say Hi!2222"
+  }
+}

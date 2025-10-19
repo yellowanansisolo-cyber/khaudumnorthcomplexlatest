@@ -1,0 +1,68 @@
+<%- include('partials/header') %>
+
+<main>
+    <!-- About Page Header -->
+    <div class="about-page-header" data-aos="fade-in">
+        <h1><%- siteContent.about.headerTitle %></h1>
+    </div>
+
+    <div class="container-fluid p-0">
+        <!-- About Us Section -->
+       <section class="about-content-section">
+          <div class="container">
+              <div class="about-flex-container">
+                  <div class="text-col" data-aos="fade-right">
+                     <h2><%- siteContent.about.section1Title %></h2>
+                     <hr>
+                     <p><%- siteContent.about.section1Para1 %></p>
+                     <p><%- siteContent.about.section1Para2 %></p>
+                  </div>
+                  <div class="img-col" data-aos="fade-left">
+                     <img src="<%- siteContent.about.section1Image %>" alt="Community members in discussion">
+                  </div>
+              </div>
+          </div>
+       </section>
+       
+       <!-- Mission Statement Section -->
+       <section class="about-content-section" style="background-color: #f8f9fa;">
+         <div class="container">
+            <div class="about-flex-container row-reverse">
+                <div class="text-col" data-aos="fade-left">
+                    <h2><%- siteContent.about.section2Title %></h2>
+                    <hr>
+                    <p><%- siteContent.about.section2Mission %></p>
+                    <p><%- siteContent.about.section2Vision %></p>
+                </div>
+                <div class="img-col" data-aos="fade-right">
+                    <img src="<%- siteContent.about.section2Image %>" alt="Wildlife in the savannah">
+                </div>
+            </div>
+         </div>
+       </section>
+       
+       <!-- Our Team Section -->
+       <section class="team-section">
+            <div class="container">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="d-inline-block"><%- siteContent.about.teamTitle %><hr></h2>
+                </div>
+                
+                <div class="team-grid">
+                    <% siteContent.about.teamMembers.forEach((member, index) => { %>
+                        <div class="card team-card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                            <div class="circle-container">
+                               <img src="<%= member.image %>" alt="Team Member <%= member.name %>">
+                            </div>
+                            <h3><%= member.name %></h3>
+                            <h4><%= member.title %></h4>
+                            <p><%= member.bio %></p>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+       </section>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

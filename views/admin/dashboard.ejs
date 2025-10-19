@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="admin-body">
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">
+                <i class="fas fa-cogs"></i>
+                Content Management
+            </h1>
+            <p class="dashboard-subtitle">
+                Select a page or section to manage its content.
+            </p>
+            <a href="/logout" class="btn-admin btn-logout">Logout</a>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Home Page Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-home card-icon"></i> Home Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Edit the hero section, about summary, and key initiatives on the main landing page.</p>
+                </div>
+                <a href="/admin/edit/home" class="btn-admin mt-auto">Edit Home Page</a>
+            </div>
+
+            <!-- News Management Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-newspaper card-icon"></i> News Management</h3>
+                </div>
+                <div class="card-content">
+                    <p>Add, edit, or delete articles, events, and announcements for the public news page.</p>
+                </div>
+                <a href="/admin/news" class="btn-admin mt-auto">Manage News</a>
+            </div>
+
+            <!-- About Page Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-info-circle card-icon"></i> About Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Update the main content sections and manage team member profiles for the About Us page.</p>
+                </div>
+                <a href="/admin/edit/about" class="btn-admin mt-auto">Edit About Page</a>
+            </div>
+
+            <!-- George Mukoya Conservancy Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-mountain-sun card-icon"></i> George Mukoya Conservancy</h3>
+                </div>
+                <div class="card-content">
+                    <p>Manage all content for the George Mukoya Conservancy sub-page.</p>
+                </div>
+                <a href="/admin/edit/george_mukoya" class="btn-admin mt-auto">Edit Page</a>
+            </div>
+
+            <!-- Muduva Nyangana Conservancy Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-water card-icon"></i> Muduva Nyangana Conservancy</h3>
+                </div>
+                <div class="card-content">
+                    <p>Manage all content for the Muduva Nyangana Conservancy sub-page.</p>
+                </div>
+                <a href="/admin/edit/muduva_nyangana" class="btn-admin mt-auto">Edit Page</a>
+            </div>
+
+            <!-- Projects Page Card -->
+             <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-tasks card-icon"></i> Projects Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Edit the header text and manage the list of projects and programs.</p>
+                </div>
+                <a href="/admin/edit/projects" class="btn-admin mt-auto">Edit Projects Page</a>
+            </div>
+
+            <!-- Natural Resources Page Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-leaf card-icon"></i> Natural Resources Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Manage the product listings and content for the Natural Resources page.</p>
+                </div>
+                <a href="/admin/edit/natural_resources" class="btn-admin mt-auto">Edit Natural Resources</a>
+            </div>
+
+            <!-- Wildlife & Hunting Page Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-crosshairs card-icon"></i> Wildlife & Hunting Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Update the introductory text and section titles for the hunting inquiries page.</p>
+                </div>
+                <a href="/admin/edit/hunting" class="btn-admin mt-auto">Edit Hunting Page</a>
+            </div>
+
+            <!-- Youth Forum Page Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-users card-icon"></i> Youth Forum Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Manage all sections of the Youth Forum, including projects, stories, and events.</p>
+                </div>
+                <a href="/admin/edit/youth_forum" class="btn-admin mt-auto">Edit Youth Forum</a>
+            </div>
+
+            <!-- Jobs & Opportunities Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-briefcase card-icon"></i> Jobs & Opportunities</h3>
+                </div>
+                <div class="card-content">
+                    <p>Manage job vacancies and tender listings on the opportunities page.</p>
+                </div>
+                <a href="/admin/edit/jobs" class="btn-admin mt-auto">Edit Jobs Page</a>
+            </div>
+
+            <!-- Downloads Page Card -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-download card-icon"></i> Downloads Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Manage all downloadable documents like reports, minutes, and official publications.</p>
+                </div>
+                <a href="/admin/edit/downloads" class="btn-admin mt-auto">Edit Downloads</a>
+            </div>
+
+            <!-- Gallery Page Card -->
+             <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-images card-icon"></i> Gallery Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Edit the header text and manage images for the Gallery page.</p>
+                </div>
+                <a href="/admin/edit/gallery" class="btn-admin mt-auto">Edit Gallery Page</a>
+            </div>
+
+            <!-- Contact Page Card -->
+             <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-envelope card-icon"></i> Contact Page</h3>
+                </div>
+                <div class="card-content">
+                    <p>Edit the titles on the Contact Us page form.</p>
+                </div>
+                <a href="/admin/edit/contact" class="btn-admin mt-auto">Edit Contact Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .image-preview { max-width: 150px; max-height: 100px; border: 1px solid #ddd; padding: 5px; margin-bottom: 10px; display: block; background-color: #f0f0f0; }
+        .new-item { border-left: 3px solid var(--color-success); }
+        .file-link { margin-top: 5px; display: block; }
+    </style>
+</head>
+<body class="admin-body">
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title"><i class="fas fa-edit"></i> <%= title %></h1>
+            <div><a href="/admin/dashboard" class="btn-admin me-2">Back to Dashboard</a><a href="/logout" class="btn-admin btn-logout">Logout</a></div>
+        </div>
+        <div class="dashboard-card">
+            <% if (typeof URLSearchParams !== 'undefined' && new URLSearchParams(locals.query).get('saved')) { %><div class="alert alert-success">Content saved successfully!</div><% } %>
+            <form action="/admin/update/<%= pageKey %>" method="POST" enctype="multipart/form-data">
+                <% for (const [key, value] of Object.entries(pageContent)) { %>
+                    <% if (typeof value === 'string') { %>
+                        <% if (key.toLowerCase().includes('image')) { %>
+                            <div class="form-group">
+                                <label><%= key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) %></label>
+                                <img src="<%= value %>" alt="Current Image" class="image-preview">
+                                <input type="file" name="new_<%= key %>" class="form-control" accept="image/*"><input type="hidden" name="<%= key %>" value="<%= value %>">
+                                <small class="form-text text-muted">Upload a new image to replace the current one.</small>
+                            </div>
+                        <% } else { %>
+                            <div class="form-group">
+                                <label for="<%= key %>"><%= key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) %></label>
+                                <% if (value.length > 100 || value.includes('<br>') || value.includes('<p>') || value.includes('<strong>')) { %>
+                                    <textarea id="<%= key %>" name="<%= key %>" class="form-control" rows="5"><%- value %></textarea>
+                                <% } else { %>
+                                    <input type="text" id="<%= key %>" name="<%= key %>" class="form-control" value="<%= value %>">
+                                <% } %>
+                            </div>
+                        <% } %>
+                    <% } else if (Array.isArray(value) && key !== 'articles') { %>
+                        <div class="dynamic-section">
+                            <div class="dynamic-section-header">
+                                <h3><%= key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) %></h3>
+                                <button type="button" class="btn-admin add-item-btn" data-section="<%= key %>"><i class="fas fa-plus me-2"></i> Add Item</button>
+                            </div>
+                            <div id="container-<%= key %>">
+                                <% value.forEach((item, index) => { %>
+                                    <div class="dynamic-item">
+                                        <div class="delete-btn-container"><button type="button" class="btn-delete" onclick="if(confirm('Are you sure you want to remove this item?')) { this.closest('.dynamic-item').remove(); }">Delete</button></div>
+                                        <% for (const field in item) { %>
+                                            <div class="form-group">
+                                                <label><%= field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) %></label>
+                                                <% if (field.toLowerCase().includes('image') || field.toLowerCase().includes('url')) { %>
+                                                    <img src="<%= item[field] %>" class="image-preview">
+                                                    <input type="file" name="<%= key %>_<%= field %>_<%= index %>" class="form-control" accept="image/*"><input type="hidden" name="<%= key %>[<%= field %>][]" value="<%= item[field] %>">
+                                                <% } else if (field.toLowerCase().includes('filepath')) { %>
+                                                    <a href="<%= item[field] %>" target="_blank" class="file-link">View Current File</a>
+                                                    <input type="file" name="<%= key %>_<%= field %>_<%= index %>" class="form-control" accept=".pdf,.doc,.docx,.zip"><input type="hidden" name="<%= key %>[<%= field %>][]" value="<%= item[field] %>">
+                                                <% } else if (item[field].length > 100 || item[field].includes('<br>') || item[field].includes('<ul>')) { %>
+                                                    <textarea name="<%= key %>[<%= field %>][]" class="form-control" rows="5"><%- item[field] %></textarea>
+                                                <% } else { %>
+                                                    <input type="text" name="<%= key %>[<%= field %>][]" class="form-control" value="<%= item[field] %>">
+                                                <% } %>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+                <button type="submit" class="btn-admin btn-save"><i class="fas fa-save me-2"></i> Save Changes</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- TEMPLATES FOR DYNAMIC SECTIONS -->
+    <template id="template-aboutImages">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="aboutImages_image___INDEX__" class="form-control"><input type="hidden" name="aboutImages[image][]" value="https://via.placeholder.com/400"></div><div class="form-group"><label>Alt Text</label><input type="text" name="aboutImages[alt][]" class="form-control" value="Descriptive alt text"></div></div>
+    </template>
+    <template id="template-initiatives">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="initiatives_image___INDEX__" class="form-control"><input type="hidden" name="initiatives[image][]" value="https://via.placeholder.com/400x220"></div><div class="form-group"><label>Title</label><input type="text" name="initiatives[title][]" class="form-control" value="New Initiative"></div><div class="form-group"><label>Description</label><textarea name="initiatives[description][]" class="form-control" rows="3">Enter description here.</textarea></div></div>
+    </template>
+    <template id="template-teamMembers">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="teamMembers_image___INDEX__" class="form-control"><input type="hidden" name="teamMembers[image][]" value="https://via.placeholder.com/200"></div><div class="form-group"><label>Name</label><input type="text" name="teamMembers[name][]" class="form-control" value="New Member"></div><div class="form-group"><label>Title</label><input type="text" name="teamMembers[title][]" class="form-control" value="Position"></div><div class="form-group"><label>Bio</label><textarea name="teamMembers[bio][]" class="form-control" rows="3">Member biography.</textarea></div></div>
+    </template>
+    <template id="template-images">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="images_url___INDEX__" class="form-control"><input type="hidden" name="images[url][]" value="https://via.placeholder.com/1260x800"></div><div class="form-group"><label>Alt Text</label><input type="text" name="images[alt][]" class="form-control" value="New gallery image"></div></div>
+    </template>
+    <template id="template-partners">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="partners_image___INDEX__" class="form-control"><input type="hidden" name="partners[image][]" value="https://via.placeholder.com/250"></div><div class="form-group"><label>Name</label><input type="text" name="partners[name][]" class="form-control" value="New Partner"></div><div class="form-group"><label>Organization</label><input type="text" name="partners[organization][]" class="form-control" value="Organization Name"></div></div>
+    </template>
+    <template id="template-testimonials">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="testimonials_image___INDEX__" class="form-control"><input type="hidden" name="testimonials[image][]" value="https://via.placeholder.com/200"></div><div class="form-group"><label>Name</label><input type="text" name="testimonials[name][]" class="form-control" value="Full Name"></div><div class="form-group"><label>Title</label><input type="text" name="testimonials[title][]" class="form-control" value="Title or Organization"></div><div class="form-group"><label>Quote</label><textarea name="testimonials[quote][]" class="form-control" rows="3">Enter the testimonial quote here.</textarea></div></div>
+    </template>
+    <template id="template-projectCards">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="projectCards_image___INDEX__" class="form-control"><input type="hidden" name="projectCards[image][]" value="https://via.placeholder.com/600x220"></div><div class="form-group"><label>Tag</label><input type="text" name="projectCards[tag][]" class="form-control" value="Category"></div><div class="form-group"><label>Title</label><input type="text" name="projectCards[title][]" class="form-control" value="New Project Title"></div><div class="form-group"><label>Description</label><textarea name="projectCards[description][]" class="form-control" rows="3">Enter project description here.</textarea></div></div>
+    </template>
+    <template id="template-products">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="products_image___INDEX__" class="form-control"><input type="hidden" name="products[image][]" value="https://via.placeholder.com/600x220"></div><div class="form-group"><label>Category</label><input type="text" name="products[category][]" class="form-control" value="Product Category"></div><div class="form-group"><label>Name</label><input type="text" name="products[name][]" class="form-control" value="New Product Name"></div><div class="form-group"><label>Description</label><textarea name="products[description][]" class="form-control" rows="3">Enter product description here.</textarea></div></div>
+    </template>
+    <template id="template-youth_forum_projects">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="projects_image___INDEX__" class="form-control"><input type="hidden" name="projects[image][]" value="https://via.placeholder.com/600x220"></div><div class="form-group"><label>Title</label><input type="text" name="projects[title][]" class="form-control" value="New Project Title"></div><div class="form-group"><label>Leader</label><input type="text" name="projects[leader][]" class="form-control" value="Led by..."></div><div class="form-group"><label>Description</label><textarea name="projects[description][]" class="form-control" rows="3">Project description.</textarea></div></div>
+    </template>
+    <template id="template-youth_forum_opportunities">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="opportunities[title][]" class="form-control" value="New Opportunity Title"></div><div class="form-group"><label>Provider</label><input type="text" name="opportunities[provider][]" class="form-control" value="Offered by..."></div><div class="form-group"><label>Description</label><textarea name="opportunities[description][]" class="form-control" rows="3">Opportunity description.</textarea></div></div>
+    </template>
+    <template id="template-youth_forum_successStories">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="successStories_image___INDEX__" class="form-control"><input type="hidden" name="successStories[image][]" value="https://via.placeholder.com/200"></div><div class="form-group"><label>Name</label><input type="text" name="successStories[name][]" class="form-control" value="Full Name"></div><div class="form-group"><label>Achievement</label><input type="text" name="successStories[achievement][]" class="form-control" value="Achievement/Title"></div><div class="form-group"><label>Story</label><textarea name="successStories[story][]" class="form-control" rows="3">Enter their story here.</textarea></div></div>
+    </template>
+    <template id="template-youth_forum_events">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Date</label><input type="date" name="events[date][]" class="form-control" value=""></div><div class="form-group"><label>Title</label><input type="text" name="events[title][]" class="form-control" value="New Event Title"></div><div class="form-group"><label>Description</label><textarea name="events[description][]" class="form-control" rows="3">Event description.</textarea></div></div>
+    </template>
+    <template id="template-vacancies">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="vacancies[title][]" class="form-control" value="Job Title"></div><div class="form-group"><label>Location</label><input type="text" name="vacancies[location][]" class="form-control" value="Location"></div><div class="form-group"><label>Type</label><input type="text" name="vacancies[type][]" class="form-control" value="Full-time/Part-time"></div><div class="form-group"><label>Summary</label><textarea name="vacancies[summary][]" class="form-control" rows="3">A brief summary of the job.</textarea></div><div class="form-group"><label>Description</label><textarea name="vacancies[description][]" class="form-control" rows="6">Full job description with responsibilities and requirements.</textarea></div></div>
+    </template>
+    <template id="template-tenders">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="tenders[title][]" class="form-control" value="Tender Title"></div><div class="form-group"><label>Reference</label><input type="text" name="tenders[reference][]" class="form-control" value="KNC-T202X-00X"></div><div class="form-group"><label>Closing Date</label><input type="date" name="tenders[closingDate][]" class="form-control"></div><div class="form-group"><label>Description</label><textarea name="tenders[description][]" class="form-control" rows="3">A brief description of the tender.</textarea></div></div>
+    </template>
+    <template id="template-reports">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="reports[title][]" class="form-control" value="New Report Title"></div><div class="form-group"><label>Description</label><textarea name="reports[description][]" class="form-control" rows="3">Report description.</textarea></div><div class="form-group"><label>File</label><input type="file" name="reports_filePath___INDEX__" class="form-control" accept=".pdf,.doc,.docx,.zip"><input type="hidden" name="reports[filePath][]" value=""></div></div>
+    </template>
+    <template id="template-minutes">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="minutes[title][]" class="form-control" value="New Minutes Title"></div><div class="form-group"><label>Description</label><textarea name="minutes[description][]" class="form-control" rows="3">Description of the meeting.</textarea></div><div class="form-group"><label>File</label><input type="file" name="minutes_filePath___INDEX__" class="form-control" accept=".pdf,.doc,.docx,.zip"><input type="hidden" name="minutes[filePath][]" value=""></div></div>
+    </template>
+    <template id="template-documents">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="documents[title][]" class="form-control" value="New Document Title"></div><div class="form-group"><label>Description</label><textarea name="documents[description][]" class="form-control" rows="3">Document description.</textarea></div><div class="form-group"><label>File</label><input type="file" name="documents_filePath___INDEX__" class="form-control" accept=".pdf,.doc,.docx,.zip"><input type="hidden" name="documents[filePath][]" value=""></div></div>
+    </template>
+    <!-- *** NEW: Templates for Conservancy sub-sections *** -->
+    <template id="template-george_mukoya_teamMembers">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="teamMembers_image___INDEX__" class="form-control"><input type="hidden" name="teamMembers[image][]" value="https://via.placeholder.com/200"></div><div class="form-group"><label>Name</label><input type="text" name="teamMembers[name][]" class="form-control" value="New Member"></div><div class="form-group"><label>Title</label><input type="text" name="teamMembers[title][]" class="form-control" value="Position"></div><div class="form-group"><label>Bio</label><textarea name="teamMembers[bio][]" class="form-control" rows="3">Member biography.</textarea></div></div>
+    </template>
+     <template id="template-george_mukoya_projects">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="projects[title][]" class="form-control" value="New Project Title"></div><div class="form-group"><label>Description</label><textarea name="projects[description][]" class="form-control" rows="3">Project description.</textarea></div></div>
+    </template>
+    <template id="template-george_mukoya_galleryImages">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="galleryImages_url___INDEX__" class="form-control"><input type="hidden" name="galleryImages[url][]" value="https://via.placeholder.com/400"></div><div class="form-group"><label>Alt Text</label><input type="text" name="galleryImages[alt][]" class="form-control" value="Descriptive alt text"></div></div>
+    </template>
+    <template id="template-muduva_nyangana_teamMembers">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="teamMembers_image___INDEX__" class="form-control"><input type="hidden" name="teamMembers[image][]" value="https://via.placeholder.com/200"></div><div class="form-group"><label>Name</label><input type="text" name="teamMembers[name][]" class="form-control" value="New Member"></div><div class="form-group"><label>Title</label><input type="text" name="teamMembers[title][]" class="form-control" value="Position"></div><div class="form-group"><label>Bio</label><textarea name="teamMembers[bio][]" class="form-control" rows="3">Member biography.</textarea></div></div>
+    </template>
+     <template id="template-muduva_nyangana_projects">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Title</label><input type="text" name="projects[title][]" class="form-control" value="New Project Title"></div><div class="form-group"><label>Description</label><textarea name="projects[description][]" class="form-control" rows="3">Project description.</textarea></div></div>
+    </template>
+    <template id="template-muduva_nyangana_galleryImages">
+        <div class="dynamic-item new-item"><div class="delete-btn-container"><button type="button" class="btn-delete" onclick="this.closest('.dynamic-item').remove();">Remove</button></div><div class="form-group"><label>Image</label><img src="https://via.placeholder.com/150x100" class="image-preview"><input type="file" name="galleryImages_url___INDEX__" class="form-control"><input type="hidden" name="galleryImages[url][]" value="https://via.placeholder.com/400"></div><div class="form-group"><label>Alt Text</label><input type="text" name="galleryImages[alt][]" class="form-control" value="Descriptive alt text"></div></div>
+    </template>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageKey = "<%= pageKey %>"; 
+
+            const successAlert = document.querySelector('.alert-success');
+            if (successAlert) { setTimeout(() => { successAlert.style.display = 'none'; window.history.replaceState(null, null, window.location.pathname); }, 3000); }
+            
+            document.querySelectorAll('.add-item-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const section = this.dataset.section;
+                    // Build a specific template ID for nested sections like in youth_forum or conservancies
+                    const templateId = `template-${pageKey}_${section}`;
+                    
+                    const template = document.getElementById(templateId) || document.getElementById(`template-${section}`);
+                    const container = document.getElementById(`container-${section}`);
+                    
+                    if (template && container) {
+                        const newIndex = container.querySelectorAll('.dynamic-item').length;
+                        let templateContent = template.innerHTML.replace(/__INDEX__/g, newIndex);
+                        container.insertAdjacentHTML('beforeend', templateContent);
+                    } else {
+                        console.error(`Template or container not found for section: ${section}. Attempted template ID: ${templateId}`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

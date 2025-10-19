@@ -1,0 +1,239 @@
+<footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Column 1: About -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h4>Khaudum North Complex</h4>
+                    <p>A central digital platform for the George Mukoya Conservancy and the Muduva Nyangana Conservancy, dedicated to conservation, community empowerment, and sustainable growth.</p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/conservancies">Our Conservancies</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/natural-resources">Natural Resources</a></li>
+                        <li><a href="/hunting">Wildlife & Hunting</a></li>
+                        <li><a href="/youth-forum">Youth Forum</a></li>
+                        <li><a href="/jobs">Jobs & Opportunities</a></li>
+                        <li><a href="/downloads">Downloads</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Connect -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h4>Contact Info</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Kavango East, Namibia</li>
+                        <li><i class="fas fa-phone me-2"></i> (+264) 123 456 789</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@khaudumnorth.org</li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4: Social Media -->
+                 <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center">
+                <p>&copy; <%= new Date().getFullYear(); %> Khaudum North Complex. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- jQuery (Required for Owl Carousel & News Page Toggle) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
+    <!-- Custom Page Script -->
+    <script>
+        $(document).ready(function(){
+            // Initialize the Services/Testimonial Carousel
+            $('.testimonial_owlCarousel').owlCarousel({
+                loop: true, margin: 10, dots: false, nav: true, autoplay: true,   
+                smartSpeed: 1500, autoplayTimeout: 5000,
+                responsive:{ 0:{ items:1 }, 600:{ items:1 }, 1000:{ items:1 } }
+            });
+            
+            // Initialize the Initiatives Carousel
+            $('.initiatives-carousel').owlCarousel({
+                loop: true, margin: 20, dots: true, nav: true,
+                navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                responsive:{ 0:{ items:1 }, 768:{ items:2 }, 992:{ items:3 } }
+            });
+
+            // Initialize the new Reviews Carousel
+            $('.reviews-carousel').owlCarousel({
+                loop:true, margin:10, dots:false, nav:true,
+                navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+                autoplay:true, smartSpeed: 2000, autoplayTimeout:4000,
+                responsive:{ 0:{ items:1 }, 576:{ items:2 }, 992:{ items:4 } }
+            });
+
+            // JS for News Page List/Grid Toggle
+            $('#list').click(function(event){
+                event.preventDefault();
+                $('#products .news-item').addClass('list-group-item');
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            $('#grid').click(function(event){
+                event.preventDefault();
+                $('#products .news-item').removeClass('list-group-item');
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+        });
+
+        // JS for Gallery Page Modal
+        const galleryModal = document.getElementById("modal");
+        if (galleryModal) {
+            const closeButton = galleryModal.querySelector(".close");
+            const links = document.getElementsByClassName("modal-link");
+            const modalImage = document.getElementById("modal-image");
+
+            function openModal(imageSrc) {
+                galleryModal.style.display = "block";
+                modalImage.src = imageSrc;
+            }
+
+            function closeModal() {
+                galleryModal.style.display = "none";
+            }
+
+            Array.from(links).forEach(function(link) {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    openModal(this.href);
+                });
+            });
+
+            closeButton.addEventListener("click", closeModal);
+
+            window.addEventListener("click", function(event) {
+                if (event.target == galleryModal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // JS for Jobs Page Application Modal
+        const applicationModal = document.getElementById('applicationModal');
+        if (applicationModal) {
+            applicationModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const jobTitle = button.getAttribute('data-job-title');
+                const jobLocation = button.getAttribute('data-job-location');
+                const jobType = button.getAttribute('data-job-type');
+                const jobDescription = button.getAttribute('data-job-description');
+
+                const modalTitle = applicationModal.querySelector('#modalJobTitle');
+                const modalLocation = applicationModal.querySelector('#modalJobLocation');
+                const modalType = applicationModal.querySelector('#modalJobType');
+                const modalDescription = applicationModal.querySelector('#modalJobDescription');
+                const formJobTitle = applicationModal.querySelector('#formJobTitle');
+
+                modalTitle.textContent = jobTitle;
+                modalLocation.innerHTML = `<i class="fas fa-map-marker-alt me-1"></i> ${jobLocation}`;
+                modalType.innerHTML = `<i class="fas fa-clock me-1"></i> ${jobType}`;
+                modalDescription.innerHTML = jobDescription;
+                formJobTitle.value = jobTitle;
+            });
+        }
+
+
+        // Initialize AOS animations
+        AOS.init({ once: true, duration: 800 });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.main-nav');
+            if(navbar) {
+                 if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+
+            // Scroll indicator logic
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (scrollIndicator) {
+                const sections = ['home', 'about', 'services', 'projects', 'reviews', 'contact-cta'];
+                let current;
+                const topOffset = 150; 
+
+                for (let i = 0; i < sections.length; i++) {
+                    const sectionEl = document.getElementById(sections[i]);
+                    if (sectionEl && sectionEl.offsetTop <= window.pageYOffset + topOffset) {
+                        current = sections[i];
+                    }
+                }
+
+                const dots = document.querySelectorAll('.scroll-indicator .dot');
+                dots.forEach(function(dot) {
+                    dot.classList.remove('active');
+                    if (dot.getAttribute('data-section') === current) {
+                        dot.classList.add('active');
+                    }
+                });
+            }
+        });
+
+        // Scroll indicator click functionality
+        document.querySelectorAll('.scroll-indicator .dot').forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intelligent Smooth Scrolling for Navigation
+        document.querySelectorAll('.desktop-nav a, .offcanvas-body a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Check if it's an anchor link
+                if (href.includes('/#')) {
+                    // If we are already on the home page
+                    if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        const targetId = href.split('#')[1];
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            const offcanvasElement = document.querySelector('.offcanvas.show');
+                            if (offcanvasElement) {
+                                const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                                bsOffcanvas.hide();
+                                // Wait for the menu to close before scrolling
+                                bsOffcanvas._element.addEventListener('hidden.bs.offcanvas', () => {
+                                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                                }, { once: true });
+                            } else {
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    }
+                    // If on another page, the link will work normally and take us to the home page anchor.
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<%- include('partials/header') %>
+
+<main class="hunting-page">
+    <!-- Page Header -->
+    <div class="projects-header" data-aos="fade-in">
+        <h1><%- siteContent.hunting.headerTitle %></h1>
+        <p class="lead"><%- siteContent.hunting.headerSubtitle %></p>
+    </div>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <section class="hunting-intro">
+            <h2 class="section-title" data-aos="fade-up"><%- siteContent.hunting.introTitle %></h2>
+            <p data-aos="fade-up" data-aos-delay="100"><%- siteContent.hunting.introParagraph %></p>
+        </section>
+
+        <!-- Inquiry Forms Section -->
+        <section class="hunting-inquiries">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="section-title"><%- siteContent.hunting.inquiryTitle %></h2>
+                <p class="lead mb-5"><%- siteContent.hunting.inquirySubtitle %></p>
+            </div>
+
+            <div class="accordion" id="huntingInquiryAccordion" data-aos="fade-up" data-aos-delay="200">
+                
+                <!-- Elephant Inquiry Form -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingElephant">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElephant" aria-expanded="false" aria-controls="collapseElephant">
+                            <i class="fas fa-象 me-3"></i> <%- siteContent.hunting.elephantTitle %>
+                        </button>
+                    </h2>
+                    <div id="collapseElephant" class="accordion-collapse collapse" aria-labelledby="headingElephant" data-bs-parent="#huntingInquiryAccordion">
+                        <div class="accordion-body">
+                            <form action="/hunting-inquiry" method="POST">
+                                <input type="hidden" name="inquiryType" value="Elephant">
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="elephant_name">Full Name</label>
+                                        <input type="text" id="elephant_name" name="fullName" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="elephant_email">Email Address</label>
+                                        <input type="email" id="elephant_email" name="email" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="elephant_nationality">Nationality</label>
+                                        <input type="text" id="elephant_nationality" name="nationality" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="elephant_dates">Preferred Hunting Dates</label>
+                                        <input type="text" id="elephant_dates" name="preferredDates" class="form-control" placeholder="e.g., June - July 2026">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label for="elephant_message">Additional Message (Optional)</label>
+                                        <textarea id="elephant_message" name="message" class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-submit-inquiry">Submit Elephant Inquiry</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plains Game Inquiry Form -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPlainsGame">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePlainsGame" aria-expanded="false" aria-controls="collapsePlainsGame">
+                            <i class="fas fa-antelope me-3"></i> <%- siteContent.hunting.plainsGameTitle %>
+                        </button>
+                    </h2>
+                    <div id="collapsePlainsGame" class="accordion-collapse collapse" aria-labelledby="headingPlainsGame" data-bs-parent="#huntingInquiryAccordion">
+                        <div class="accordion-body">
+                            <form action="/hunting-inquiry" method="POST">
+                                <input type="hidden" name="inquiryType" value="Plains Game">
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="plains_name">Full Name</label>
+                                        <input type="text" id="plains_name" name="fullName" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="plains_email">Email Address</label>
+                                        <input type="email" id="plains_email" name="email" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="plains_nationality">Nationality</label>
+                                        <input type="text" id="plains_nationality" name="nationality" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="plains_dates">Preferred Hunting Dates</label>
+                                        <input type="text" id="plains_dates" name="preferredDates" class="form-control" placeholder="e.g., June - July 2026">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label for="plains_species">Species of Interest (e.g., Kudu, Eland)</label>
+                                        <textarea id="plains_species" name="speciesInterest" class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-submit-inquiry">Submit Plains Game Inquiry</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Ethical Commitment Section -->
+    <section class="ethics-statement">
+        <div class="container" data-aos="fade-up">
+            <div class="icon"><i class="fas fa-shield-check"></i></div>
+            <h3><%- siteContent.hunting.ethicsTitle %></h3>
+            <p class="lead" style="max-width: 800px; margin: 0 auto;"><%- siteContent.hunting.ethicsParagraph %></p>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer') %>

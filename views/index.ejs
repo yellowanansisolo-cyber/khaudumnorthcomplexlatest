@@ -1,0 +1,137 @@
+<%- include('partials/header') %>
+
+<!-- This main wrapper contains all the sections for the single-page layout -->
+<div id="page-wrapper">
+
+    <!-- Hero Section -->
+    <!-- *** CORRECTED: Dynamic background-image is now applied here *** -->
+    <section id="home" class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('<%- siteContent.home.heroImage %>');">
+        <div class="hero-content">
+            <p class="subtitle"><%- siteContent.home.heroSubtitle %></p>
+            <h1 class="serif-font"><%- siteContent.home.heroTitle %></h1>
+            <a href="/about" class="explore-button">EXPLORE MORE</a>
+        </div>
+    </section>
+
+    <!-- About Us Section (NatureFriend Style) -->
+    <section id="about" class="about-section-nf">
+        <div class="container-nf">
+            <div class="left-column" data-aos="fade-right">
+                <% siteContent.home.aboutImages.forEach(item => { %>
+                    <div class="image-container">
+                        <img src="<%= item.image %>" alt="<%= item.alt %>">
+                    </div>
+                <% }) %>
+            </div>
+            <div class="right-column" data-aos="fade-left">
+                <h3><%- siteContent.home.aboutSubtitle %></h3>
+                <h2><%- siteContent.home.aboutTitle %></h2>
+                <p><%- siteContent.home.aboutParagraph %></p>
+                <p class="signature">Management Team</p>
+                <p class="managing-director">George Mukoya & Muduva Nyangana Conservancies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services & Partner Testimonials Section -->
+    <section id="services" class="services_section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                   <div class="about_content">
+                        <div class="background_layer"></div>
+                        <div class="layer_content">
+                            <div class="section_title" data-aos="fade-right">
+                                <h5><%- siteContent.home.servicesSubtitle %></h5>
+                                <h2><%- siteContent.home.servicesTitle %></h2>
+                                <div class="heading_line"><span></span></div>
+                                <p><%- siteContent.home.servicesParagraph %></p>
+                            </div>
+                            <a href="/projects" data-aos="fade-right" data-aos-delay="100">View All Projects<i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="testimonial_box">
+                        <div class="testimonial_container">
+                            <div class="background_layer"></div>
+                            <div class="layer_content">
+                                <div class="testimonial_owlCarousel owl-carousel">
+                                    <% siteContent.home.testimonials.forEach(testimonial => { %>
+                                        <div class="testimonials"> 
+                                            <div class="testimonial_content">
+                                                <div class="testimonial_caption">
+                                                    <h6><%= testimonial.name %></h6>
+                                                    <span><%= testimonial.title %></span>
+                                                </div>
+                                                <p><%= testimonial.quote %></p>
+                                            </div>
+                                            <div class="images_box">
+                                                <div class="testimonial_img"><img class="img-center" src="<%= testimonial.image %>" alt="Testimonial from <%= testimonial.name %>"></div>
+                                            </div>
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-number d-none">01</div>
+    </section>
+
+    <!-- Our Key Initiatives Section -->
+    <section id="projects" class="initiatives-section">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up"><h2 class="section-title"><%- siteContent.home.initiativesTitle %></h2></div>
+            <div class="initiatives-carousel owl-carousel owl-theme mt-5" data-aos="fade-up" data-aos-delay="200">
+                <% siteContent.home.initiatives.forEach(item => { %>
+                    <div class="initiative-card">
+                        <div class="initiative-image-container"><img src="<%= item.image %>" alt="<%= item.title %>" class="initiative-image"></div>
+                        <div class="initiative-info">
+                            <h3 class="initiative-title"><%= item.title %></h3>
+                            <p class="initiative-description"><%= item.description %></p>
+                            <a href="/projects" class="initiative-btn">Learn More</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+        <div class="section-number">02</div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up"><h2 class="section-title"><%- siteContent.home.partnersTitle %></h2></div>
+            <div class="reviews-carousel-wrapper" data-aos="fade-up" data-aos-delay="200">
+                <div class="reviews-carousel owl-carousel owl-theme">
+                    <% siteContent.home.partners.forEach(partner => { %>
+                        <div class="reviews_item_image">
+                           <img src="<%= partner.image %>" alt="Partner: <%= partner.name %>">
+                           <div class="reviews_item_caption"><h4><%= partner.name %></h4><hr><h5><%= partner.organization %></h5></div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        <div class="section-number">03</div>
+    </section>
+    
+    <!-- Contact CTA Section -->
+    <section id="contact-cta" class="contact-cta-section">
+        <div class="container" data-aos="fade-up">
+            <h2><%- siteContent.home.ctaTitle %></h2>
+            <p class="my-4"><%- siteContent.home.ctaParagraph %></p>
+            <ul class="contact-details-list">
+                <li><i class="fas fa-phone"></i> (+264) 123 456 789</li>
+                <li><i class="fas fa-envelope"></i> info@khaudumnorth.org</li>
+                <li><i class="fas fa-map-marker-alt"></i> Kavango East Region, Namibia</li>
+            </ul>
+            <a href="/contact" class="btn-cta">Contact Us Page</a>
+        </div>
+    </section>
+
+</div> 
+<%- include('partials/footer') %>
